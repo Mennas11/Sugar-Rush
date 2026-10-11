@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff9f3">
+  <title>Sugar Rush | Sweet Moments</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="#home" class="logo">
+        <span class="logo-icon">♡</span>
+        <span>Sugar Rush<span class="logo-heart">♥</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Our Menu</a></li>
+        <li><a href="#special-deals">Special Deals</a></li>
+        <li><a href="#about">Our Story</a></li>
+      </ul>
+
+      <button class="cart-button" id="cart-button" type="button">
+        ♡ Cart <span id="cart-count" class="cart-count-badge">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="eyebrow">A LITTLE JOY IN EVERY BITE</p>
+
+    <h1>
+      Life is sweeter with a little
+      <span>Sugar Rush.</span>
+    </h1>
+
+    <p class="hero-description">
+      From dreamy cakes to cozy coffee moments, find your next favorite treat.
+    </p>
+
+    <div class="hero-actions">
+      <a class="primary-button" href="#products">
+        Explore Our Menu →
+      </a>
+      <a class="text-link" href="#special-deals">
+        View Special Deals
+      </a>
+    </div>
+
+    <p class="hero-note">♡ Made for your sweetest moments</p>
+  </div>
+
+  <div class="hero-art">
+    <img
+      src="./images/Floating Donuts in Creamy Milk Splash.png"
+      alt="Three colorful donuts surrounded by a splash of milk"
+      class="hero-image"
+    >
+  </div>
+</section>
+
+
+    <!-- SPECIAL DEALS -->
+    <section class="deals-section" id="special-deals">
+      <div class="section-heading">
+        <p class="eyebrow">A LITTLE EXTRA SWEETNESS</p>
+        <h2>Special <span>Deals</span> ♡</h2>
+        <p>
+          Enjoy 15% off selected treats. A little something sweet, just for you.
+        </p>
+      </div>
+
+      <div id="deals-container" class="products-grid">
+        <p class="loading">Loading sweet deals...</p>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products-section" id="products">
+      <div class="section-heading">
+        <p class="eyebrow">BAKED WITH LOVE</p>
+        <h2>Find Your <span>Happy Place</span></h2>
+        <p>Something sweet for every mood and every moment.</p>
+      </div>
+
+      <div class="product-controls">
+        <label class="search-box">
+          <span>⌕</span>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Search your favorite treat..."
+            aria-label="Search products"
+          >
+        </label>
+
+        <label class="select-box">
+          <span class="sr-only">Category</span>
+          <select id="category-filter">
+            <option value="all">All Categories</option>
+          </select>
+        </label>
+
+        <label class="select-box">
+          <span class="sr-only">Sort products</span>
+          <select id="sort-filter">
+            <option value="featured">Newest Treats</option>
+            <option value="deals">Special Deals</option>
+            <option value="name">Our favorites</option>
+            <option value="name-desc">Freshly Baked</option>
+          </select>
+        </label>
+      </div>
+
+      <p id="results-count" class="results-count">Loading treats...</p>
+
+      <div id="products-container" class="products-grid">
+        <p class="loading">Freshly loading your treats...</p>
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section class="story-section" id="about">
+      <div class="story-decoration" aria-hidden="true">♡</div>
+
+      <div class="story-content">
+        <p class="eyebrow">MADE WITH LOVE & A LITTLE SUGAR</p>
+        <h2>Every treat has a <span>sweet story.</span></h2>
+
+        <p>
+          At Sugar Rush, we believe the sweetest moments are often the
+          simplest ones. A cozy coffee, a little afternoon treat, or a
+          slice of cake shared with someone you love.
+        </p>
+
+        <p>
+          Our menu is filled with delightful bites and little reasons
+          to smile. Whatever you're craving, there's always something
+          sweet waiting for you here.
+        </p>
+
+        <a href="#products" class="primary-button">
+          Find Your Sweet Treat →
+        </a>
+      </div>
+
+      <div class="story-card">
+        <span class="story-heart">♡</span>
+        <p class="story-card-title">OUR LITTLE PHILOSOPHY</p>
+        <h3>Life's better when it's a little sweeter.</h3>
+        <span class="story-card-footer">Baked into every moment ✧</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <a href="#home" class="footer-logo">Sugar Rush <span>♥</span></a>
+    <p>Made with love, served with a smile.</p>
+    <p class="copyright">
+      © <span id="current-year"></span> Sugar Rush. All sweet things reserved.
+    </p>
+  </footer>
+
+  <!-- SHOPPING CART -->
+  <div id="cart-overlay" class="cart-overlay" hidden></div>
+
+  <aside
+    id="cart-drawer"
+    class="cart-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Shopping cart"
+    aria-hidden="true"
+  >
+    <div class="cart-header">
+      <div>
+        <p class="drawer-eyebrow">A LITTLE TREAT FOR YOU</p>
+        <h2>Your Cart ♡</h2>
+      </div>
+
+      <button
+        id="close-cart"
+        class="round-close"
+        type="button"
+        aria-label="Close cart"
+      >×</button>
+    </div>
+
+    <div id="cart-items" class="cart-items">
+      <p class="empty-cart">Your cart is empty. Add something sweet!</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong id="cart-total">0.00</strong>
+      </div>
+
+      <p class="cart-note">
+        Sweet moments are just a few clicks away.
+      </p>
+
+      <button id="clear-cart" class="secondary-button" type="button">
+        Clear Cart
+      </button>
+    </div>
+  </aside>
+
+  <!-- PRODUCT DETAILS -->
+  <div id="product-modal" class="product-modal" hidden>
+    <button
+      class="modal-backdrop"
+      type="button"
+      data-close-modal
+      aria-label="Close product details"
+    ></button>
+
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-product-name"
+    >
+      <button
+        id="close-product-modal"
+        class="round-close modal-x"
+        type="button"
+        aria-label="Close details"
+      >×</button>
+
+      <img id="modal-product-image" src="" alt="">
+
+      <div class="modal-info">
+        <p id="modal-product-category" class="product-category"></p>
+        <h2 id="modal-product-name"></h2>
+        <p id="modal-product-price" class="modal-price"></p>
+
+        <p id="modal-product-description" class="modal-description">
+          A lovely treat for your next sweet moment.
+        </p>
+
+        <button id="modal-add-to-cart" class="primary-button" type="button">
+          Add to Cart ♡
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-toast" class="cart-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
