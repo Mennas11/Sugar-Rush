@@ -1,99 +1,215 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light"> 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff9f3">
-  <title>Sugar Rush | Sweet Moments</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="theme-color" content="#fff9f3"> 
+  <title>Sugar Rush | Sweet Moments</title> 
+  <meta name="description" content="Sugar Rush - dreamy cakes, cozy coffee and sweet treats. Create an account and get 20% off your first order."> 
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="Sugar Rush | Sweet Moments">
+  <meta property="og:description" content="Life is sweeter with a little Sugar Rush. Create an account and get 20% off with code SUGARRUSH20."> 
+  <meta property="og:image" content="./Floating%20Donuts%20in%20Creamy%20Milk%20Splash.png"> 
+  <meta name="twitter:card" content="summary_large_image"> 
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧁</text></svg>"> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="style.css"> 
 </head>
-<body>
-  <header class="site-header">
-    <nav class="navbar" aria-label="Main navigation">
-      <a href="#home" class="logo">
-        <span class="logo-icon">♡</span>
-        <span>Sugar Rush<span class="logo-heart">♥</span></span>
-      </a>
 
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#products">Our Menu</a></li>
-        <li><a href="#special-deals">Special Deals</a></li>
-        <li><a href="#about">Our Story</a></li>
-      </ul>
+<body> 
 
-      <button class="cart-button" id="cart-button" type="button">
-        ♡ Cart <span id="cart-count" class="cart-count-badge">0</span>
-      </button>
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"> <!-- container - scroll -->
+    <div class="scroll-progress-fill"></div> <!-- container - scroll -->
+    <span class="scroll-donut">🍩</span> <!-- text - scroll -->
+  </div>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader" role="status" aria-label="Loading"> <!-- container - preloader -->
+    <div class="preloader-inner"> <!-- container - preloader -->
+      <div class="preloader-donut" aria-hidden="true">🍩</div> <!-- container - preloader -->
+      <div class="preloader-logo">Sugar Rush<span>♥</span></div> <!-- container - preloader -->
+      <div class="preloader-bar" aria-hidden="true"><i></i></div> <!-- container - preloader -->
+    </div>
+  </div>
+
+  <!-- PROMO BAR -->
+  <div class="promo-bar" id="promo-bar"> <!-- container - promo code / offers -->
+    🎉 Create an account and get 20% off your order! Use code
+    <strong>SUGARRUSH20</strong> <!-- bold text -->
+    <a id="promo-register-link">Sign up now</a> <!-- link - promo code / offers -->
+    <button class="promo-close" id="promo-close" type="button" aria-label="Close banner">×</button> <!-- button - promo code / offers -->
+  </div>
+
+  <header class="site-header"> <!-- header - header -->
+    <nav class="navbar navbar-expand-lg" aria-label="Main navigation"> <!-- navigation - navigation -->
+      <div class="navbar-inner w-100 d-flex flex-wrap align-items-center justify-content-between gap-3"> <!-- container - navigation -->
+
+        <a href="#home" class="logo"> <!-- link - logo -->
+          <span class="logo-icon">♡</span> <!-- text - logo -->
+          <span>Sugar Rush<span class="logo-heart">♥</span></span> <!-- text - logo -->
+        </a>
+
+        <!-- button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#sugarRushNavbar"
+          aria-controls="sugarRushNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span> <!-- text - navigation -->
+        </button>
+
+        <div class="collapse navbar-collapse" id="sugarRushNavbar"> <!-- container - navigation -->
+
+          <ul class="navbar-nav mx-auto mb-3 mb-lg-0 nav-links"> <!-- list - navigation -->
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li> <!-- list item - navigation -->
+            <li class="nav-item"><a class="nav-link" href="#products">Our Menu</a></li> <!-- list item - navigation -->
+            <li class="nav-item"><a class="nav-link" href="#special-deals">Special Deals</a></li> <!-- list item - navigation -->
+            <li class="nav-item"><a class="nav-link" href="#about">Our Story</a></li> <!-- list item - navigation -->
+          </ul>
+
+          <div class="nav-actions"> <!-- container - navigation -->
+
+            <button class="wishlist-nav-button" id="wishlist-nav-btn" type="button" aria-label="Wishlist"> <!-- button - wishlist -->
+              ♥ <span id="wishlist-count" class="wishlist-count-badge">0</span>
+            </button>
+
+            <button class="auth-button" id="auth-nav-btn" type="button">Log In</button> <!-- button - authentication -->
+
+            <button class="cart-button" id="cart-button" type="button"> <!-- button - cart -->
+              ♡ Cart <span id="cart-count" class="cart-count-badge">0</span>
+            </button>
+
+            <!-- Theme Toggle Button (Sun/Moon) -->
+            <button class="theme-toggle-button" id="theme-toggle-btn" type="button" aria-label="Toggle Dark/Light Mode"> <!-- button - theme toggle -->
+              ☀️
+            </button>
+
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
-  <main>
-    <!-- HERO -->
-
-<section class="hero" id="home">
-  <div class="hero-content">
-    <p class="eyebrow">A LITTLE JOY IN EVERY BITE</p>
-
-    <h1>
-      Life is sweeter with a little
-      <span>Sugar Rush.</span>
-    </h1>
-
-    <p class="hero-description">
-      From dreamy cakes to cozy coffee moments, find your next favorite treat.
-    </p>
-
-    <div class="hero-actions">
-      <a class="primary-button" href="#products">
-        Explore Our Menu →
-      </a>
-      <a class="text-link" href="#special-deals">
-        View Special Deals
-      </a>
+  <!-- ANNOUNCEMENT MARQUEE -->
+  <div class="marquee" aria-label="Announcements"> <!-- container - marquee strip -->
+    <div class="marquee-track"> <!-- container - marquee strip -->
+      <div class="marquee-group"> <!-- container - marquee strip -->
+        <span class="marquee-item">🚚 Free delivery on orders over $100</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+        <span class="marquee-item">🎉 20% off your first order — code SUGARRUSH20</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+        <span class="marquee-item">🥐 Freshly baked every day</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+        <span class="marquee-item">🍰 Handmade with love</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+        <span class="marquee-item">☕ Cozy coffee &amp; sweet treats</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+      </div>
+      <div class="marquee-group" aria-hidden="true"> <!-- container - marquee strip -->
+        <span class="marquee-item">🚚 Free delivery on orders over $100</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+        <span class="marquee-item">🎉 20% off your first order — code SUGARRUSH20</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+        <span class="marquee-item">🥐 Freshly baked every day</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+        <span class="marquee-item">🍰 Handmade with love</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+        <span class="marquee-item">☕ Cozy coffee &amp; sweet treats</span> <!-- text - marquee strip -->
+        <span class="marquee-dot" aria-hidden="true">♥</span> <!-- text - marquee strip -->
+      </div>
     </div>
-
-    <p class="hero-note">♡ Made for your sweetest moments</p>
   </div>
 
-  <div class="hero-art">
-    <img
-      src="./images/Floating Donuts in Creamy Milk Splash.png"
-      alt="Three colorful donuts surrounded by a splash of milk"
-      class="hero-image"
-    >
-  </div>
-</section>
+  <main> <!-- main content -->
 
+    <!-- HERO -->
+    <section class="hero" id="home"> <!-- section - hero section -->
+      <div class="hero-content"> <!-- container - hero section -->
+
+        <p class="eyebrow">A LITTLE JOY IN EVERY BITE</p> <!-- paragraph - eyebrow text -->
+
+        <h1> <!-- main heading -->
+          Life is sweeter with a little
+          <span>Sugar Rush.</span> <!-- text -->
+        </h1>
+
+        <p class="hero-description"> <!-- paragraph - hero section -->
+          From dreamy cakes to cozy coffee moments, find your next favorite treat.
+        </p>
+
+        <div class="hero-actions"> <!-- container - hero section -->
+
+          <a class="primary-button" href="#products"> <!-- link - buttons -->
+            Explore Our Menu →
+          </a>
+
+          <a class="text-link" href="#special-deals"> <!-- link -->
+            View Special Deals
+          </a>
+
+        </div>
+
+        <p class="hero-note">♡ Made for your sweetest moments</p> <!-- paragraph - hero section -->
+
+      </div>
+
+      <div class="hero-art"> <!-- container - hero section -->
+        <!-- image -->
+        <img
+          src="./Floating%20Donuts%20in%20Creamy%20Milk%20Splash.png"
+          alt="Three colorful donuts surrounded by a splash of milk"
+          class="hero-image"
+          onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='./images/Floating%20Donuts%20in%20Creamy%20Milk%20Splash.png';}"
+        >
+      </div>
+    </section>
+
+    <!-- CATEGORY CHIPS -->
+    <section class="category-strip" id="category-strip" aria-label="Browse by category"> <!-- section - categories -->
+      <div class="category-chips" id="category-chips"></div> <!-- container - categories -->
+    </section>
 
     <!-- SPECIAL DEALS -->
-    <section class="deals-section" id="special-deals">
-      <div class="section-heading">
-        <p class="eyebrow">A LITTLE EXTRA SWEETNESS</p>
-        <h2>Special <span>Deals</span> ♡</h2>
-        <p>
+    <section class="deals-section" id="special-deals"> <!-- section - deals -->
+
+      <div class="section-heading"> <!-- container - section headings -->
+        <p class="eyebrow">A LITTLE EXTRA SWEETNESS</p> <!-- paragraph - eyebrow text -->
+
+        <h2>Special <span>Deals</span> ♡</h2> <!-- section heading -->
+
+        <p> <!-- paragraph -->
           Enjoy 15% off selected treats. A little something sweet, just for you.
         </p>
       </div>
 
-      <div id="deals-container" class="products-grid">
-        <p class="loading">Loading sweet deals...</p>
+      <div id="deals-container" class="products-grid"> <!-- container - deals -->
+        <p class="loading">Loading sweet deals...</p> <!-- paragraph -->
       </div>
+
     </section>
 
     <!-- PRODUCTS -->
-    <section class="products-section" id="products">
-      <div class="section-heading">
-        <p class="eyebrow">BAKED WITH LOVE</p>
-        <h2>Find Your <span>Happy Place</span></h2>
-        <p>Something sweet for every mood and every moment.</p>
+    <section class="products-section" id="products"> <!-- section - products -->
+
+      <div class="section-heading"> <!-- container - section headings -->
+        <p class="eyebrow">BAKED WITH LOVE</p> <!-- paragraph - eyebrow text -->
+
+        <h2>Find Your <span>Happy Place</span></h2> <!-- section heading -->
+
+        <p>Something sweet for every mood and every moment.</p> <!-- paragraph -->
       </div>
 
-      <div class="product-controls">
-        <label class="search-box">
-          <span>⌕</span>
+      <div class="product-controls"> <!-- container - products -->
+
+        <label class="search-box"> <!-- field label - search -->
+          <span>⌕</span> <!-- text -->
+
+          <!-- input field -->
           <input
             type="search"
             id="search-input"
@@ -102,77 +218,207 @@
           >
         </label>
 
-        <label class="select-box">
-          <span class="sr-only">Category</span>
-          <select id="category-filter">
-            <option value="all">All Categories</option>
+        <label class="select-box category-select"> <!-- field label - categories -->
+          <span class="sr-only">Category</span> <!-- text -->
+
+          <select id="category-filter"> <!-- dropdown - categories -->
+            <option value="all">🍽️ All Categories</option> <!-- option -->
           </select>
         </label>
 
-        <label class="select-box">
-          <span class="sr-only">Sort products</span>
-          <select id="sort-filter">
-            <option value="featured">Newest Treats</option>
-            <option value="deals">Special Deals</option>
-            <option value="name">Our favorites</option>
-            <option value="name-desc">Freshly Baked</option>
+        <label class="select-box"> <!-- field label - dropdown -->
+          <span class="sr-only">Sort products</span> <!-- text -->
+
+          <select id="sort-filter"> <!-- dropdown -->
+            <option value="featured">✨ Newest Treats</option> <!-- option -->
+            <option value="deals">🏷️ Special Deals</option> <!-- option -->
+            <option value="name">💖 Our favorites</option> <!-- option -->
+            <option value="name-desc">🥐 Freshly Baked</option> <!-- option -->
           </select>
         </label>
+
       </div>
 
-      <p id="results-count" class="results-count">Loading treats...</p>
+      <p id="results-count" class="results-count">Loading treats...</p> <!-- paragraph -->
 
-      <div id="products-container" class="products-grid">
-        <p class="loading">Freshly loading your treats...</p>
+      <div id="products-container" class="products-grid"> <!-- container - products -->
+        <p class="loading">Freshly loading your treats...</p> <!-- paragraph -->
+      </div>
+
+    </section>
+
+    <!-- HOW TO ORDER -->
+    <section class="steps-section" id="how-it-works"> <!-- section - order steps -->
+
+      <div class="section-heading"> <!-- container - section headings -->
+        <p class="eyebrow">SO EASY, SO SWEET</p> <!-- paragraph - eyebrow text -->
+
+        <h2>How to <span>Order</span></h2> <!-- section heading -->
+
+        <p>Three little steps between you and something delicious.</p> <!-- paragraph -->
+      </div>
+
+      <div class="steps-grid"> <!-- container - order steps -->
+
+        <div class="step-card"> <!-- container - order steps -->
+          <span class="step-number">1</span> <!-- text - order steps -->
+          <h3>Pick your treats</h3> <!-- sub heading -->
+          <p>Browse the menu and add your favorites to the cart.</p> <!-- paragraph -->
+        </div>
+
+        <div class="step-card"> <!-- container - order steps -->
+          <span class="step-number">2</span> <!-- text - order steps -->
+          <h3>Create an account</h3> <!-- sub heading -->
+          <p>Sign up and use code <strong>SUGARRUSH20</strong> for 20% off.</p> <!-- paragraph -->
+        </div>
+
+        <div class="step-card"> <!-- container - order steps -->
+          <span class="step-number">3</span> <!-- text - order steps -->
+          <h3>Place your order</h3> <!-- sub heading -->
+          <p>Confirm your order and get ready to enjoy every bite.</p> <!-- paragraph -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (sample texts: replace with real customer reviews) -->
+    <section class="testimonials-section" id="reviews"> <!-- section - reviews -->
+
+      <div class="section-heading"> <!-- container - section headings -->
+        <p class="eyebrow">LOVED BY OUR GUESTS</p> <!-- paragraph - eyebrow text -->
+
+        <h2>Sweet <span>Words</span></h2> <!-- section heading -->
+
+        <p>A few kind things our customers have said about us.</p> <!-- paragraph -->
+      </div>
+
+      <div class="testimonials-grid"> <!-- container - testimonials -->
+
+        <figure class="testimonial-card"> <!-- card - testimonials -->
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div> <!-- container - stars -->
+
+          <blockquote>"Everything arrived fresh and tasted amazing. The perfect afternoon treat!"</blockquote> <!-- quote -->
+
+          <figcaption class="testimonial-author"> <!-- card caption - authentication -->
+            <span class="testimonial-avatar">S</span> <!-- text - testimonials -->
+
+            <div> <!-- container -->
+              <strong>Sara M.</strong> <!-- bold text -->
+              <span>Verified customer</span> <!-- text -->
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card"> <!-- card - testimonials -->
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div> <!-- container - stars -->
+
+          <blockquote>"Ordering was super easy and the discount code was a lovely surprise."</blockquote> <!-- quote -->
+
+          <figcaption class="testimonial-author"> <!-- card caption - authentication -->
+            <span class="testimonial-avatar">O</span> <!-- text - testimonials -->
+
+            <div> <!-- container -->
+              <strong>Omar K.</strong> <!-- bold text -->
+              <span>Verified customer</span> <!-- text -->
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card"> <!-- card - testimonials -->
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div> <!-- container - stars -->
+
+          <blockquote>"Cozy vibes in every bite. My whole family is hooked on Sugar Rush."</blockquote> <!-- quote -->
+
+          <figcaption class="testimonial-author"> <!-- card caption - authentication -->
+            <span class="testimonial-avatar">N</span> <!-- text - testimonials -->
+
+            <div> <!-- container -->
+              <strong>Nour A.</strong> <!-- bold text -->
+              <span>Verified customer</span> <!-- text -->
+            </div>
+          </figcaption>
+        </figure>
+
       </div>
     </section>
 
     <!-- OUR STORY -->
-    <section class="story-section" id="about">
-      <div class="story-decoration" aria-hidden="true">♡</div>
+    <section class="story-section" id="about"> <!-- section - story section -->
 
-      <div class="story-content">
-        <p class="eyebrow">MADE WITH LOVE & A LITTLE SUGAR</p>
-        <h2>Every treat has a <span>sweet story.</span></h2>
+      <div class="story-decoration" aria-hidden="true">♡</div> <!-- container - story section -->
 
-        <p>
+      <div class="story-content"> <!-- container - story section -->
+
+        <p class="eyebrow">MADE WITH LOVE & A LITTLE SUGAR</p> <!-- paragraph - eyebrow text -->
+
+        <h2>Every treat has a <span>sweet story.</span></h2> <!-- section heading -->
+
+        <p> <!-- paragraph -->
           At Sugar Rush, we believe the sweetest moments are often the
           simplest ones. A cozy coffee, a little afternoon treat, or a
           slice of cake shared with someone you love.
         </p>
 
-        <p>
+        <p> <!-- paragraph -->
           Our menu is filled with delightful bites and little reasons
           to smile. Whatever you're craving, there's always something
           sweet waiting for you here.
         </p>
 
-        <a href="#products" class="primary-button">
+        <a href="#products" class="primary-button"> <!-- link - buttons -->
           Find Your Sweet Treat →
         </a>
+
       </div>
 
-      <div class="story-card">
-        <span class="story-heart">♡</span>
-        <p class="story-card-title">OUR LITTLE PHILOSOPHY</p>
-        <h3>Life's better when it's a little sweeter.</h3>
-        <span class="story-card-footer">Baked into every moment ✧</span>
+      <div class="story-card"> <!-- container - story section -->
+        <span class="story-heart">♡</span> <!-- text - story section -->
+
+        <p class="story-card-title">OUR LITTLE PHILOSOPHY</p> <!-- paragraph - story section -->
+
+        <h3>Life's better when it's a little sweeter.</h3> <!-- sub heading -->
+
+        <span class="story-card-footer">Baked into every moment ✧</span> <!-- text - story section -->
       </div>
+
     </section>
+
   </main>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <a href="#home" class="footer-logo">Sugar Rush <span>♥</span></a>
-    <p>Made with love, served with a smile.</p>
-    <p class="copyright">
+  <footer class="site-footer"> <!-- footer - footer -->
+
+    <a href="#home" class="footer-logo">Sugar Rush <span>♥</span></a> <!-- link - footer -->
+
+    <p>Made with love, served with a smile.</p> <!-- paragraph -->
+
+    <form class="newsletter" id="newsletter-form"> <!-- form - newsletter -->
+      <p class="newsletter-title">Get sweet news &amp; offers ♡</p> <!-- paragraph - newsletter -->
+
+      <div class="newsletter-row"> <!-- container - newsletter -->
+        <!-- input field -->
+        <input
+          type="email"
+          id="newsletter-email"
+          required
+          placeholder="Your email address"
+          aria-label="Email address"
+        >
+
+        <button type="submit">Subscribe</button> <!-- button -->
+      </div>
+    </form>
+
+    <p class="copyright"> <!-- paragraph -->
       © <span id="current-year"></span> Sugar Rush. All sweet things reserved.
     </p>
+
   </footer>
 
   <!-- SHOPPING CART -->
-  <div id="cart-overlay" class="cart-overlay" hidden></div>
+  <div id="cart-overlay" class="cart-overlay" hidden></div> <!-- container - cart -->
 
+  <!-- side panel -->
   <aside
     id="cart-drawer"
     class="cart-drawer"
@@ -181,42 +427,136 @@
     aria-label="Shopping cart"
     aria-hidden="true"
   >
-    <div class="cart-header">
-      <div>
-        <p class="drawer-eyebrow">A LITTLE TREAT FOR YOU</p>
-        <h2>Your Cart ♡</h2>
+
+    <div class="cart-header"> <!-- container - cart -->
+
+      <div> <!-- container -->
+        <p class="drawer-eyebrow">A LITTLE TREAT FOR YOU</p> <!-- paragraph - eyebrow text -->
+        <h2>Your Cart ♡</h2> <!-- section heading -->
       </div>
 
+      <!-- button -->
       <button
         id="close-cart"
         class="round-close"
         type="button"
         aria-label="Close cart"
       >×</button>
+
     </div>
 
-    <div id="cart-items" class="cart-items">
-      <p class="empty-cart">Your cart is empty. Add something sweet!</p>
+    <div id="free-delivery" class="free-delivery" hidden> <!-- container - free delivery bar -->
+      <p id="free-delivery-text"></p> <!-- paragraph - free delivery bar -->
+      <div class="free-delivery-bar"> <!-- container - free delivery bar -->
+        <span id="free-delivery-fill"></span> <!-- text - free delivery bar -->
+      </div>
     </div>
 
-    <div class="cart-footer">
-      <div class="cart-total-row">
-        <span>Total</span>
-        <strong id="cart-total">0.00</strong>
+    <div id="cart-items" class="cart-items"> <!-- container - cart -->
+      <p class="empty-cart">Your cart is empty. Add something sweet!</p> <!-- paragraph - cart -->
+    </div>
+
+    <div class="cart-footer"> <!-- container - cart -->
+
+      <div class="promo-code-box"> <!-- container - promo code / offers -->
+
+        <div class="promo-code-row"> <!-- container - promo code / offers -->
+          <!-- input field -->
+          <input
+            type="text"
+            id="promo-input"
+            placeholder="Promo code"
+            aria-label="Promo code"
+            autocomplete="off"
+          >
+
+          <button type="button" id="promo-apply-btn" class="promo-apply-btn"> <!-- button - promo code / offers -->
+            Apply
+          </button>
+        </div>
+
+        <p id="promo-message" class="promo-message" hidden></p> <!-- paragraph - promo code / offers -->
+
       </div>
 
-      <p class="cart-note">
+      <div class="cart-summary-row"> <!-- container - cart -->
+        <span>Subtotal</span> <!-- text -->
+        <span id="cart-subtotal">0.00</span> <!-- text - cart -->
+      </div>
+
+      <div class="cart-summary-row discount" id="cart-discount-row" hidden> <!-- container - cart -->
+        <span> <!-- text -->
+          Promo (20% off)
+          <button type="button" class="promo-remove" id="promo-remove-btn">Remove</button> <!-- button - promo code / offers -->
+        </span>
+
+        <span id="cart-discount">-0.00</span> <!-- text - cart -->
+      </div>
+
+      <div class="cart-total-row"> <!-- container - cart -->
+        <span>Total</span> <!-- text -->
+        <strong id="cart-total">0.00</strong> <!-- bold text - cart -->
+      </div>
+
+      <p class="cart-note"> <!-- paragraph - cart -->
         Sweet moments are just a few clicks away.
       </p>
 
-      <button id="clear-cart" class="secondary-button" type="button">
+      <button id="place-order-btn" class="primary-button place-order-btn" type="button"> <!-- button - buttons -->
+        Place Order ♡
+      </button>
+
+      <button id="clear-cart" class="secondary-button" type="button"> <!-- button - cart -->
         Clear Cart
       </button>
+
     </div>
   </aside>
 
-  <!-- PRODUCT DETAILS -->
-  <div id="product-modal" class="product-modal" hidden>
+  <!-- WISHLIST DRAWER -->
+  <!-- side panel -->
+  <aside
+    id="wishlist-drawer"
+    class="cart-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Wishlist"
+    aria-hidden="true"
+  >
+
+    <div class="cart-header"> <!-- container - cart -->
+
+      <div> <!-- container -->
+        <p class="drawer-eyebrow">SAVED WITH LOVE</p> <!-- paragraph - eyebrow text -->
+        <h2>Your Wishlist ♥</h2> <!-- section heading -->
+      </div>
+
+      <!-- button -->
+      <button
+        id="close-wishlist"
+        class="round-close"
+        type="button"
+        aria-label="Close wishlist"
+      >×</button>
+
+    </div>
+
+    <div id="wishlist-items" class="cart-items"> <!-- container - wishlist -->
+      <p class="empty-cart">Your wishlist is empty. Save your favorite treats!</p> <!-- paragraph - cart -->
+    </div>
+
+    <div class="cart-footer"> <!-- container - cart -->
+      <button id="clear-wishlist" class="secondary-button" type="button"> <!-- button - wishlist -->
+        Clear Wishlist
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- PRODUCT DETAILS WITH UNIQUE REVIEWS -->
+  <div id="product-modal" class="product-modal" hidden> <!-- container - products -->
+
+    <!-- button -->
     <button
       class="modal-backdrop"
       type="button"
@@ -224,12 +564,15 @@
       aria-label="Close product details"
     ></button>
 
+    <!-- container -->
     <div
       class="modal-card"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-product-name"
     >
+
+      <!-- button -->
       <button
         id="close-product-modal"
         class="round-close modal-x"
@@ -237,24 +580,260 @@
         aria-label="Close details"
       >×</button>
 
-      <img id="modal-product-image" src="" alt="">
+      <img id="modal-product-image" src="" alt=""> <!-- image - products -->
 
-      <div class="modal-info">
-        <p id="modal-product-category" class="product-category"></p>
-        <h2 id="modal-product-name"></h2>
-        <p id="modal-product-price" class="modal-price"></p>
+      <div class="modal-info"> <!-- container - modal -->
 
-        <p id="modal-product-description" class="modal-description">
+        <p id="modal-product-category" class="product-category"></p> <!-- paragraph - categories -->
+
+        <h2 id="modal-product-name"></h2> <!-- section heading - products -->
+
+        <p id="modal-product-price" class="modal-price"></p> <!-- paragraph - products -->
+
+        <!-- Rating Summary -->
+        <div class="product-rating-summary"> <!-- container - products -->
+          <span>★</span> <!-- text -->
+          <span id="modal-rating-avg">3.9</span> <!-- text - modal -->
+          <span class="reviews-count" id="modal-reviews-count">(120 reviews)</span> <!-- text - modal -->
+        </div>
+
+        <p id="modal-product-description" class="modal-description"> <!-- paragraph - products -->
           A lovely treat for your next sweet moment.
         </p>
 
-        <button id="modal-add-to-cart" class="primary-button" type="button">
+        <!-- button -->
+        <button
+          id="modal-add-to-cart"
+          class="primary-button"
+          type="button"
+          style="width: 100%;"
+        >
           Add to Cart ♡
         </button>
+
+        <!-- Leave a Review Section -->
+        <div class="leave-review-box"> <!-- container - reviews -->
+
+          <h4>✏️ Leave a Review</h4> <!-- small heading -->
+
+          <div class="star-rating-picker" id="star-picker"> <!-- container - stars -->
+            <span data-value="1" class="active">★</span> <!-- text -->
+            <span data-value="2" class="active">★</span> <!-- text -->
+            <span data-value="3" class="active">★</span> <!-- text -->
+            <span data-value="4" class="active">★</span> <!-- text -->
+            <span data-value="5" class="active">★</span> <!-- text -->
+          </div>
+
+          <form id="review-form" class="review-input-group"> <!-- form - reviews -->
+            <input type="text" id="review-text" required placeholder="Write your review..."> <!-- input field - reviews -->
+            <button type="submit" class="review-submit-btn">Submit</button> <!-- button - reviews -->
+          </form>
+
+        </div>
       </div>
     </div>
   </div>
 
-  <div id="cart-toast" class="cart-toast" role="status" aria-live="polite"></div>
+  <!-- AUTH MODAL (LOGIN / REGISTER) -->
+  <div id="auth-modal" class="auth-modal" hidden> <!-- container - modal -->
+
+    <!-- button -->
+    <button
+      class="modal-backdrop"
+      type="button"
+      data-close-auth
+      aria-label="Close auth modal"
+    ></button>
+
+    <div class="auth-card" role="dialog" aria-modal="true"> <!-- container - authentication -->
+
+      <!-- button -->
+      <button
+        id="close-auth-modal"
+        class="round-close modal-x"
+        type="button"
+        aria-label="Close"
+      >×</button>
+
+      <!-- LOGIN FORM -->
+      <div id="login-view"> <!-- container - login -->
+
+        <h2>Welcome Back ♡</h2> <!-- section heading -->
+
+        <p>Please log in to your account to order.</p> <!-- paragraph -->
+
+        <div id="login-error" class="auth-error" hidden></div> <!-- container - authentication -->
+
+        <form id="login-form"> <!-- form - login -->
+
+          <div class="form-group"> <!-- container - form -->
+            <label for="login-email">Email</label> <!-- field label -->
+            <input type="email" id="login-email" required placeholder="name@example.com"> <!-- input field - login -->
+          </div>
+
+          <div class="form-group"> <!-- container - form -->
+            <label for="login-password">Password</label> <!-- field label -->
+
+            <div class="password-wrapper"> <!-- container - password -->
+              <input type="password" id="login-password" required placeholder="••••••••"> <!-- input field - login -->
+
+              <!-- button -->
+              <button
+                type="button"
+                class="toggle-password"
+                data-target="login-password"
+                aria-label="Toggle password visibility"
+              >👁️‍🗨️</button>
+            </div>
+          </div>
+
+          <!-- button -->
+          <button
+            type="submit"
+            class="primary-button"
+            style="width: 100%; margin-top: 10px;"
+          >
+            Log In
+          </button>
+
+        </form>
+
+        <div class="auth-switch"> <!-- container - authentication -->
+          Don't have an account? <a id="switch-to-register">Register</a>
+        </div>
+
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="register-view" hidden> <!-- container - registration -->
+
+        <h2>Create Account ♡</h2> <!-- section heading -->
+
+        <p>Join Sugar Rush for sweet treats and deals.</p> <!-- paragraph -->
+
+        <div id="register-error" class="auth-error" hidden></div> <!-- container - authentication -->
+
+        <form id="register-form"> <!-- form - registration -->
+
+          <div class="form-group"> <!-- container - form -->
+            <label for="reg-name">Full Name</label> <!-- field label -->
+            <input type="text" id="reg-name" required placeholder="Your name"> <!-- input field - registration -->
+          </div>
+
+          <div class="form-group"> <!-- container - form -->
+            <label for="reg-email">Email</label> <!-- field label -->
+            <input type="email" id="reg-email" required placeholder="name@example.com"> <!-- input field - registration -->
+          </div>
+
+          <div class="form-group"> <!-- container - form -->
+            <label for="reg-password">Password</label> <!-- field label -->
+
+            <div class="password-wrapper"> <!-- container - password -->
+              <input type="password" id="reg-password" required placeholder="••••••••"> <!-- input field - registration -->
+
+              <!-- button -->
+              <button
+                type="button"
+                class="toggle-password"
+                data-target="reg-password"
+                aria-label="Toggle password visibility"
+              >👁️‍🗨️</button>
+            </div>
+          </div>
+
+          <!-- button -->
+          <button
+            type="submit"
+            class="primary-button"
+            style="width: 100%; margin-top: 10px;"
+          >
+            Register
+          </button>
+
+        </form>
+
+        <div class="auth-switch"> <!-- container - authentication -->
+          Already have an account? <a id="switch-to-login">Log In</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER SUCCESS -->
+  <div id="order-success" class="success-modal" hidden> <!-- container - modal -->
+
+    <div class="success-backdrop" data-close-success></div> <!-- container - order success -->
+
+    <div class="success-card" role="dialog" aria-modal="true" aria-labelledby="success-title"> <!-- container - order success -->
+
+      <div class="success-hearts" id="success-hearts" aria-hidden="true"></div> <!-- container - order success -->
+
+      <div class="success-gift" aria-hidden="true"> <!-- container - order success -->
+        <div class="gift-confetti"> <!-- container - gift box -->
+          <span class="gc gc-bar" style="--dx:-96px;--dy:-62px;--c:#e8998d;--r:0deg;--dl:0.85s"></span> <!-- text -->
+          <span class="gc gc-dot" style="--dx:-70px;--dy:-84px;--c:#f2c94c;--r:47deg;--dl:0.89s"></span> <!-- text -->
+          <span class="gc gc-heart" style="--dx:-44px;--dy:-56px;--c:#ff6b81;--r:94deg;--dl:0.93s">♥</span> <!-- text - hearts -->
+          <span class="gc gc-bar" style="--dx:-20px;--dy:-92px;--c:#ffffff;--r:141deg;--dl:0.97s"></span> <!-- text -->
+          <span class="gc gc-dot" style="--dx:6px;--dy:-70px;--c:#b67568;--r:8deg;--dl:1.01s"></span> <!-- text -->
+          <span class="gc gc-heart" style="--dx:30px;--dy:-88px;--c:#f7a8b8;--r:55deg;--dl:0.85s">♥</span> <!-- text - hearts -->
+          <span class="gc gc-bar" style="--dx:54px;--dy:-60px;--c:#f2c94c;--r:102deg;--dl:0.89s"></span> <!-- text -->
+          <span class="gc gc-dot" style="--dx:78px;--dy:-84px;--c:#e8998d;--r:149deg;--dl:0.93s"></span> <!-- text -->
+          <span class="gc gc-heart" style="--dx:100px;--dy:-58px;--c:#ff8fa3;--r:16deg;--dl:0.97s">♥</span> <!-- text - hearts -->
+          <span class="gc gc-dot" style="--dx:-110px;--dy:-30px;--c:#f7a8b8;--r:63deg;--dl:1.01s"></span> <!-- text -->
+          <span class="gc gc-bar" style="--dx:112px;--dy:-34px;--c:#ffffff;--r:110deg;--dl:0.85s"></span> <!-- text -->
+          <span class="gc gc-bar" style="--dx:-58px;--dy:-40px;--c:#c98b7e;--r:157deg;--dl:0.89s"></span> <!-- text -->
+          <span class="gc gc-heart" style="--dx:62px;--dy:-42px;--c:#e74c3c;--r:24deg;--dl:0.93s">♥</span> <!-- text - hearts -->
+          <span class="gc gc-dot" style="--dx:-8px;--dy:-48px;--c:#f2c94c;--r:71deg;--dl:0.97s"></span> <!-- text -->
+        </div>
+        <div class="gift-lid"><span class="gift-bow"><i></i><i></i><b></b></span></div> <!-- container - gift box -->
+        <div class="gift-body"></div> <!-- container - gift box -->
+      </div>
+
+      <h2 id="success-title">Order placed!</h2> <!-- section heading - order success -->
+
+      <p id="success-text"></p> <!-- paragraph - order success -->
+
+      <p class="success-order-id" id="success-order-id"></p> <!-- paragraph - order success -->
+
+      <button type="button" class="primary-button" id="success-close"> <!-- button - order success -->
+        Back to the menu ♡
+      </button>
+
+    </div>
+  </div>
+
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="bottom-nav" aria-label="Quick navigation"> <!-- navigation - navigation -->
+
+    <a href="#home" class="bnav-item"> <!-- link - navigation -->
+      <span class="bnav-icon">⌂</span> <!-- text - navigation -->
+      <span>Home</span> <!-- text -->
+    </a>
+
+    <a href="#products" class="bnav-item"> <!-- link - navigation -->
+      <span class="bnav-icon">🍰</span> <!-- text - navigation -->
+      <span>Menu</span> <!-- text -->
+    </a>
+
+    <button type="button" class="bnav-item" id="bnav-wishlist"> <!-- button - wishlist -->
+      <span class="bnav-icon">♥</span> <!-- text - navigation -->
+      <span>Wishlist</span> <!-- text -->
+      <b class="bnav-badge" id="bnav-wishlist-count" hidden>0</b> <!-- badge - wishlist -->
+    </button>
+
+    <button type="button" class="bnav-item" id="bnav-cart"> <!-- button - cart -->
+      <span class="bnav-icon">♡</span> <!-- text - navigation -->
+      <span>Cart</span> <!-- text -->
+      <b class="bnav-badge" id="bnav-cart-count" hidden>0</b> <!-- badge - cart -->
+    </button>
+
+  </nav>
+
+  <div id="cart-toast" class="cart-toast" role="status" aria-live="polite"></div> <!-- container - cart -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- script -->
+  <script src="main.js"></script> <!-- script -->
+
 </body>
 </html>
